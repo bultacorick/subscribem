@@ -8,7 +8,9 @@ module Subscribem
       g.test_framework :rspec, :view_specs => false
     end
     initializer 'subscribem middleware warden' do
-      Rails.application.config.middleware.use Warden::Manager
+      Rails.application.config.middleware.use Warden::Manager do |manager|
+        manager.default_strategies :password
+      end
     end
   end
 end

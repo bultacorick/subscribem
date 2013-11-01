@@ -1,5 +1,17 @@
 module Subscribem
   class ApplicationController < ActionController::Base
+    def force_authentication!(account, user)
+      env['warden'].set_user(user.id, :scope => :user)
+      env['warden'].set_user(account.id, :scope => :account)
+    end
+    helper_method :force_authentication!
+    def authenticate_user!
+      unless user_signed_in?
+        flash[:notice] = "Please sign in."
+        redirect_to '/sign_in'
+      end
+    end
+    helper_method :authenticate_user!
     def current_account
       if user_signed_in?
         @current_account ||=
