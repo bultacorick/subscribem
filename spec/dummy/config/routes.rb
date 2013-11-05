@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  get "things/index"
-  get "/things" => "things#index", :as => :things
   mount Subscribem::Engine => "/"
+  get "/things" => "things#index", :as => :things
 end
