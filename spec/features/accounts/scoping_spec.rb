@@ -1,5 +1,6 @@
 require 'spec_helper'
-
+require 'subscribem/testing_support/factories/account_factory'
+require 'subscribem/testing_support/factories/user_factory'
 feature "Account scoping" do
   let!(:account_a) { FactoryGirl.create(:account_with_schema) }
   let!(:account_b) { FactoryGirl.create(:account_with_schema) }

@@ -7,13 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% flash.each do |k,v| %>
-  <div class='flash <%= k %>'><%= v %></div>
-<% end %>
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>
+  <% flash.each do |k,v| %>
+    <div class='flash <%= k %>'><%= v %></div>
   <% end %>
-<%= yield %>
-
+  <%= render :partial => "subscribem/shared/login" %>
+  <%= yield %>
 </body>
 </html>
